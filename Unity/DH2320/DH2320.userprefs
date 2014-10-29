@@ -1,9 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CameraController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Minijson.cs.cs">
     <Files>
-      <File FileName="Assets\Scripts\CameraController.cs" Line="34" Column="36" />
-      <File FileName="Assets\Scripts\Tweet.cs" Line="23" Column="1" />
+      <File FileName="Assets/Scripts/Minijson.cs.cs" Line="573" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
