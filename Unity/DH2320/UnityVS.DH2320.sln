@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.DH2320.CSharp", "UnityVS.DH2320.CSharp.csproj", "{D496911C-75E5-FED8-2AD0-F89044F8D70A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.DH2320.CSharp.Editor", "UnityVS.DH2320.CSharp.Editor.csproj", "{01F718B8-229B-31E3-C33E-E287DD0CF665}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D496911C-75E5-FED8-2AD0-F89044F8D70A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D496911C-75E5-FED8-2AD0-F89044F8D70A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D496911C-75E5-FED8-2AD0-F89044F8D70A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D496911C-75E5-FED8-2AD0-F89044F8D70A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01F718B8-229B-31E3-C33E-E287DD0CF665}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01F718B8-229B-31E3-C33E-E287DD0CF665}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01F718B8-229B-31E3-C33E-E287DD0CF665}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01F718B8-229B-31E3-C33E-E287DD0CF665}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

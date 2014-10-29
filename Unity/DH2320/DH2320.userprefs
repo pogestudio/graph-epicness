@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TweetData.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Tweet.cs" Line="61" Column="19" />
+      <File FileName="Assets\Scripts\Managers\TweetFactory.cs" Line="18" Column="31" />
+      <File FileName="Assets\Scripts\TweetData.cs" Line="8" Column="23" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
