@@ -3,8 +3,6 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour {
 
-	public Camera camera;
-
 	// Use this for initialization
 	void Start () {
 	}
@@ -32,7 +30,6 @@ public class CameraController : MonoBehaviour {
 
 			x = this.transform.localScale.x;
 			y = this.transform.localScale.y;
-			if(x * 1024 >= camera.pixelWidth)
 				this.transform.localScale = new Vector2(x - s, y - s);
 		}
 	}
