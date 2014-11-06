@@ -13,15 +13,20 @@ public class Tweet : MonoBehaviour
 		double Latitude;
 		double Longitude;
 
-		public void Build (double Latitude, double Longitude)
+		public void Build ()
 		{
-				this.Latitude = Latitude;
-				this.Longitude = Longitude;
+				this.Latitude = this.Data.coordinate.Latitude;
+				this.Longitude = this.Data.coordinate.Longitude;
 				WorldMap = GameObject.FindGameObjectWithTag ("Respawn");
 				CC = new CoordinateCorverter ();
 				c = CC.Convert (Latitude, Longitude);
 				PinDot (c);
 				this.transform.parent = WorldMap.transform;
+		}
+		
+		public void addData (TweetData data)
+		{
+				this.Data = data;
 		}
 
 		void PinDot (CoordinateCorverter.CoordinateXY xy)
