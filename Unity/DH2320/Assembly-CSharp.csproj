@@ -46,10 +46,16 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\JSON\JSONObject.cs" />
+     <Compile Include="Assets\JSON\JSONTemplates.cs" />
+     <Compile Include="Assets\JSON\VectorTemplates.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\CoordinateCorverter.cs" />
+     <Compile Include="Assets\Scripts\Managers\TweetFactory.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\Tweet.cs" />
+     <Compile Include="Assets\Scripts\TweetData.cs" />
+     <None Include="Assets\JSON\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
