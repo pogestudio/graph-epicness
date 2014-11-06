@@ -23,7 +23,7 @@ public class TweetData
 		{
 
 				this.text = jsonObject.GetField ("text").ToString ();
-				Debug.Log (jsonObject.GetField ("entities").type);
+				//Debug.Log (jsonObject.GetField ("entities").type);
 				if (jsonObject.GetField ("coordinates").type == JSONObject.Type.OBJECT) {
 						//Debug.Log ("jsonobject isS " + jsonObject.GetField ("coordinates").list [1]);
 
@@ -49,9 +49,14 @@ public class TweetData
 	
 		public void printDesc ()
 		{
-				Debug.Log ("tweet is " + this.text);
-				Debug.Log ("hashtag1 is " + this.hashTags [0]);
-				Debug.Log ("coordinates are:::: " + this.coordinate.Latitude + "  " + this.coordinate.Longitude);
-
+				Debug.Log ("DESCRIPTION\n  TWEET " + this.text);
+				Debug.Log ("  HASHTAGS");
+				int index = 0;
+				foreach (string hashtag in this.hashTags) {
+						Debug.Log ("    " + index++ + " " + hashtag);
+				}
+		
+				Debug.Log ("  COORDINATES\n    LAT: " + this.coordinate.Latitude);
+				Debug.Log ("    LON: " + this.coordinate.Longitude);
 		}
 }
