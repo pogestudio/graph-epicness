@@ -14,13 +14,6 @@ public class Spawner : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-//				GameObject o = (GameObject)Instantiate (TweetDot);
-//				o.GetComponentInChildren<Tweet> ().Build (35.21, 53.22);
-//				o = (GameObject)Instantiate (TweetDot);
-//				o.GetComponentInChildren<Tweet> ().Build (21.21, 43.22);
-//				o = (GameObject)Instantiate (TweetDot);
-//				o.GetComponentInChildren<Tweet> ().Build (-31.21, -21.22);
-
 //for now, spawner decides when to add stuff.
 				tweetDatasToBeSpawned = new Queue<TweetData> ();
 				GameObject factoryGO = GameObject.Find ("TweetFactory");
@@ -39,6 +32,9 @@ public class Spawner : MonoBehaviour
 				bool shouldSpawnNext = shouldSpawnNextInQueue (this.tweetDatasToBeSpawned);
 		
 				while (shouldSpawnNext) {
+						if (tweetDatasToBeSpawned.Peek () == null) {
+								Debug.Log ("null is at heast: " + tweetDatasToBeSpawned.Peek ());
+						}
 						GameObject tweetGameObject = (GameObject)Instantiate (TweetDot);
 						Tweet tweetScriptForObject = tweetGameObject.GetComponentInChildren<Tweet> ();
 			

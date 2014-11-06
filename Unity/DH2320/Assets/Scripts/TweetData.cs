@@ -16,13 +16,22 @@ public class TweetData
 		public string text;
 		public CoordinateLL coordinate;
 		public IList<string> hashTags;
+		
+		private bool _isWFormatted;
 
 
 
-		public void fillTweetWithData (JSONObject jsonObject)
+		public bool fillTweetWithData (JSONObject jsonObject)
 		{
-
+				_isWFormatted = true;
+				_isWFormatted = _isWFormatted && jsonObject.GetField ("text").type == JSONObject.Type.STRING;
+				if (!_isWFormatted) {
+						return _isWFormatted;
+				}
 				this.text = jsonObject.GetField ("text").ToString ();
+				Debug.Log ("type is: " + jsonObject.GetField ("text").type + " text is : " + this.text);
+		
+				Debug.Log (this.text);
 				//Debug.Log (jsonObject.GetField ("entities").type);
 				if (jsonObject.GetField ("coordinates").type == JSONObject.Type.OBJECT) {
 						//Debug.Log ("jsonobject isS " + jsonObject.GetField ("coordinates").list [1]);
@@ -43,7 +52,8 @@ public class TweetData
 								this.hashTags.Add (j.GetField ("text").ToString ());
 						}
 				}
-
+				
+				return _isWFormatted;
 
 		}
 	
@@ -59,4 +69,6 @@ public class TweetData
 				Debug.Log ("  COORDINATES\n    LAT: " + this.coordinate.Latitude);
 				Debug.Log ("    LON: " + this.coordinate.Longitude);
 		}
+		
+	
 }
