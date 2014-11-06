@@ -15,8 +15,8 @@ public class Tweet : MonoBehaviour
 
 		public void Build ()
 		{
-				this.Latitude = this.Data.coordinate.Latitude;
-				this.Longitude = this.Data.coordinate.Longitude;
+				this.Latitude = this.Data.coordinate.Longitude;
+				this.Longitude = this.Data.coordinate.Latitude;
 				WorldMap = GameObject.FindGameObjectWithTag ("Respawn");
 				CC = new CoordinateCorverter ();
 				c = CC.Convert (Latitude, Longitude);
