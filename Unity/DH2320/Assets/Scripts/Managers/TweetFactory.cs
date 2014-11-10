@@ -14,7 +14,7 @@ public class TweetFactory : MonoBehaviour
 		public void printTestData ()
 		{
 				TweetData data = DataFromJson ();
-				data.printDesc ();
+				//data.printDesc ();
 		
 	
 				ArrayList TweetDatas = testTweetDatas ();
@@ -26,7 +26,7 @@ public class TweetFactory : MonoBehaviour
 		public ArrayList testTweetDatas ()
 		{
 				ArrayList JSONInStringFormat = arrayFromJsonString ();
-				Debug.Log ("Got " + JSONInStringFormat.Count + " json objects from arrayfromjsonstring");
+				//Debug.Log ("Got " + JSONInStringFormat.Count + " json objects from arrayfromjsonstring");
 				ArrayList TweetDatas = tweetsFromJSONData (JSONInStringFormat);
 				return TweetDatas;
 		}
@@ -52,7 +52,7 @@ public class TweetFactory : MonoBehaviour
 						if (wellFormatted) {
 								TweetDatas.Add (tweetD);
 						}
-						Debug.Log ("was well formatted: " + wellFormatted);
+						//Debug.Log ("was well formatted: " + wellFormatted);
 				}
 				return TweetDatas;
 		}
