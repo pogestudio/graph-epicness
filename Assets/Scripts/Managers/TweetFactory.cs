@@ -56,7 +56,7 @@ public class TweetFactory : MonoBehaviour
 						if (wellFormatted) {
 								TweetDatas.Add (tweetD);
 						}
-						Debug.Log ("was well formatted: " + wellFormatted);
+						//Debug.Log ("was well formatted: " + wellFormatted);
 				}
 				return TweetDatas;
 		}

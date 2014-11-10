@@ -27,6 +27,7 @@ public class Tweet : MonoBehaviour
 				c = CC.Convert (Latitude, Longitude);
 				PinDot (c);
 				this.transform.parent = WorldMap.transform;
+				this.transform.localScale = new Vector3 (0.005f, 0.005f, 1f);
 		}
 		
 		public void addData (TweetData data)
@@ -50,7 +51,7 @@ public class Tweet : MonoBehaviour
 				float opacity = opacityForTime (timeLived);
 				thisRenderer.color = new Color (oldColor.r, oldColor.g, oldColor.b, opacity);
 				
-				Debug.Log ("Opacity " + opacity + " for time" + timeLived);
+				//Debug.Log ("Opacity " + opacity + " for time" + timeLived);
 		}
 		
 		float opacityForTime (float time)
