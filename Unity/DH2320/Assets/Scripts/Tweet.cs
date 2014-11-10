@@ -31,8 +31,8 @@ public class Tweet : MonoBehaviour
 
 		void PinDot (CoordinateCorverter.CoordinateXY xy)
 		{
-				float x = (float)((xy.x - (MapPixels / 2)) * this.transform.localScale.x * WorldMap.transform.localScale.x);
-				float y = (float)((xy.y - (MapPixels / 2)) * this.transform.localScale.y * WorldMap.transform.localScale.y);
+				float x = (float)((xy.x - (MapPixels / 2)) * this.transform.localScale.x * WorldMap.transform.localScale.x + WorldMap.transform.localPosition.x);
+				float y = (float)((xy.y - (MapPixels / 2)) * this.transform.localScale.y * WorldMap.transform.localScale.y - WorldMap.transform.localPosition.y);
 				this.transform.position = new Vector2 (x, -y);
 		}
 }
