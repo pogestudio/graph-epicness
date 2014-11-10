@@ -34,6 +34,8 @@ public class TweetData
 		
 				//Debug.Log (this.text);
 				//Debug.Log (jsonObject.GetField ("entities").type);
+				Debug.Log ("full object: " + jsonObject);
+		
 				if (jsonObject.GetField ("coordinates").type == JSONObject.Type.OBJECT) {
 						//Debug.Log ("jsonobject isS " + jsonObject.GetField ("coordinates").list [1]);
 

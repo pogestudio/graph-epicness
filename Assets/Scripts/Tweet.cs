@@ -12,6 +12,11 @@ public class Tweet : MonoBehaviour
 
 		double Latitude;
 		double Longitude;
+		
+		float timeLived = 0;
+		float lifeSpan = 5f;
+		float startOpacity = 0.6f;
+		float endOpacity = 0.1f;
 
 		public void Build ()
 		{
@@ -34,5 +39,25 @@ public class Tweet : MonoBehaviour
 				float x = (float)((xy.x - (MapPixels / 2)) * this.transform.localScale.x * WorldMap.transform.localScale.x + WorldMap.transform.localPosition.x);
 				float y = (float)((xy.y - (MapPixels / 2)) * this.transform.localScale.y * WorldMap.transform.localScale.y - WorldMap.transform.localPosition.y);
 				this.transform.position = new Vector2 (x, -y);
+		}
+		
+		void Update ()
+		{
+		
+				timeLived += Time.deltaTime;
+				SpriteRenderer thisRenderer = gameObject.GetComponent<SpriteRenderer> (); 
+				Color oldColor = thisRenderer.color;
+				float opacity = opacityForTime (timeLived);
+				thisRenderer.color = new Color (oldColor.r, oldColor.g, oldColor.b, opacity);
+				
+				Debug.Log ("Opacity " + opacity + " for time" + timeLived);
+		}
+		
+		float opacityForTime (float time)
+		{
+		
+				float c = -0.870551f;
+				float progress = Mathf.Min (1, time / lifeSpan);
+				return endOpacity + (startOpacity - endOpacity) * (1 - progress);
 		}
 }
