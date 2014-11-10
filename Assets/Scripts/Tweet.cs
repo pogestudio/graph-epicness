@@ -50,7 +50,7 @@ public class Tweet : MonoBehaviour
 				float opacity = opacityForTime (timeLived);
 				thisRenderer.color = new Color (oldColor.r, oldColor.g, oldColor.b, opacity);
 				
-				Debug.Log ("Opacity " + opacity + " for time" + timeLived);
+				//Debug.Log ("Opacity " + opacity + " for time" + timeLived);
 		}
 		
 		float opacityForTime (float time)
