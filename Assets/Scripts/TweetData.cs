@@ -29,10 +29,12 @@ public class TweetData
 						return _isWFormatted;
 				}
 				this.text = jsonObject.GetField ("text").ToString ();
-				Debug.Log ("type is: " + jsonObject.GetField ("text").type + " text is : " + this.text);
+				//Debug.Log ("type is: " + jsonObject.GetField ("text").type + " text is : " + this.text);
 		
 				Debug.Log (this.text);
 				//Debug.Log (jsonObject.GetField ("entities").type);
+				Debug.Log ("full object: " + jsonObject);
+		
 				if (jsonObject.GetField ("coordinates").type == JSONObject.Type.OBJECT) {
 						//Debug.Log ("jsonobject isS " + jsonObject.GetField ("coordinates").list [1]);
 
