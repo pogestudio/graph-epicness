@@ -16,6 +16,7 @@ public class TweetData
 		public string text;
 		public CoordinateLL coordinate;
 		public IList<string> hashTags;
+		public DateTime DateTime;
 		
 		private bool _isWFormatted;
 
@@ -31,7 +32,7 @@ public class TweetData
 				this.text = jsonObject.GetField ("text").ToString ();
 				//Debug.Log ("type is: " + jsonObject.GetField ("text").type + " text is : " + this.text);
 		
-				Debug.Log (this.text);
+				//Debug.Log (this.text);
 				//Debug.Log (jsonObject.GetField ("entities").type);
 				Debug.Log ("full object: " + jsonObject);
 		
@@ -54,6 +55,8 @@ public class TweetData
 								this.hashTags.Add (j.GetField ("text").ToString ());
 						}
 				}
+				this.DateTime = new DateTime (1970, 1, 1, 0, 0, 0, 0).AddSeconds (Math.Round (Convert.ToDouble (jsonObject.GetField ("timestamp_ms").ToString ()) / 1000d)).ToLocalTime ();
+				//Debug.Log ("DateTime is: " + this.DateTime);
 				
 				return _isWFormatted;
 
@@ -61,15 +64,15 @@ public class TweetData
 	
 		public void printDesc ()
 		{
-				Debug.Log ("DESCRIPTION\n  TWEET " + this.text);
-				Debug.Log ("  HASHTAGS");
+				//Debug.Log ("DESCRIPTION\n  TWEET " + this.text);
+				//Debug.Log ("  HASHTAGS");
 				int index = 0;
 				foreach (string hashtag in this.hashTags) {
-						Debug.Log ("    " + index++ + " " + hashtag);
+						//Debug.Log ("    " + index++ + " " + hashtag);
 				}
 		
-				Debug.Log ("  COORDINATES\n    LAT: " + this.coordinate.Latitude);
-				Debug.Log ("    LON: " + this.coordinate.Longitude);
+				//Debug.Log ("  COORDINATES\n    LAT: " + this.coordinate.Latitude);
+				//Debug.Log ("    LON: " + this.coordinate.Longitude);
 		}
 		
 	
