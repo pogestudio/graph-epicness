@@ -10,6 +10,8 @@ public class Tweet : MonoBehaviour
 		CoordinateCorverter.CoordinateXY c;
 		TweetData Data;
 
+		public GUIText GuiText;
+
 		double Latitude;
 		double Longitude;
 		
@@ -28,6 +30,7 @@ public class Tweet : MonoBehaviour
 				PinDot (c);
 				this.transform.parent = WorldMap.transform;
 				this.transform.localScale = new Vector3 (0.05f, 0.05f, 1f);
+				GuiText = GameObject.FindGameObjectWithTag ("Finish").guiText;
 		}
 		
 		public void addData (TweetData data)
@@ -35,9 +38,18 @@ public class Tweet : MonoBehaviour
 				this.Data = data;
 		}
 
-		public void OnMouseDown ()
+		public void OnMouseEnter ()
 		{
-				Debug.Log (Data.text);
+//				float x = Input.mousePosition.x;
+//				float y = Input.mousePosition.y;
+//				Debug.Log ("x: " + x + " y: " + y);
+//				GuiText.transform.position = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+				GuiText.text = Data.text;
+		}
+
+		public void OnMouseExit ()
+		{
+				GuiText.text = "";
 		}
 
 		void PinDot (CoordinateCorverter.CoordinateXY xy)
