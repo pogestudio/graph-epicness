@@ -35,6 +35,11 @@ public class Tweet : MonoBehaviour
 				this.Data = data;
 		}
 
+		public void OnMouseDown ()
+		{
+				Debug.Log (Data.text);
+		}
+
 		void PinDot (CoordinateCorverter.CoordinateXY xy)
 		{
 				SpriteRenderer thisRenderer = gameObject.GetComponent<SpriteRenderer> (); 
