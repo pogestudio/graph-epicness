@@ -5,7 +5,7 @@ using System;
 public class CoordinateCorverter : MonoBehaviour
 {
 
-		static double MapPixels = 1024;
+		static double MapPixels = 4096;
 		static double EarthRadius = 6378137;
 		static double MinLatitude = -85.05112878;
 		static double MaxLatitude = 85.05112878;
