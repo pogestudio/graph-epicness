@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
 		public DateTime CurrentTimelineTime;
 		public DateTime OldTimelineTime;
 		private Queue<TweetData> tweetDatasToBeSpawned;
-		public ArrayList TestTweets;
+		public ArrayList tweetsFromFile;
 		public bool TimelineMoved;
 	
 
@@ -24,10 +24,10 @@ public class Spawner : MonoBehaviour
 				tweetDatasToBeSpawned = new Queue<TweetData> ();
 				GameObject factoryGO = GameObject.Find ("TweetFactory");
 				TweetFactory tweetFactory = factoryGO.GetComponentInChildren<TweetFactory> ();
-				this.TestTweets = tweetFactory.testTweetDatas ();
-				foreach (TweetData data in TestTweets) {
-						//tweetDatasToBeSpawned.Enqueue (data);
-				}
+				tweetsFromFile = tweetFactory.nextTweetDatasForTag ("ebola");
+//				foreach (TweetData data in TestTweets) {
+//						//tweetDatasToBeSpawned.Enqueue (data);
+//				}
 				
 
 		}
@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
 		void Update ()
 		{
 				if (TimelineMoved) {
-						foreach (TweetData tweet in TestTweets) {
+						foreach (TweetData tweet in tweetsFromFile) {
 								if (tweet.DateTime < CurrentTimelineTime && tweet.DateTime > OldTimelineTime) {
 										addTweetDatasToQueue (tweet);
 								}

@@ -4,29 +4,21 @@ using System.Collections;
 public class TweetFactory : MonoBehaviour
 {
 
+		private long nextTweetIndex = 0;
+		private long tweetIntervalToUse = 1000;
+
 		// Use this for initialization
 		void Start ()
 		{
 	
-				printTestData ();
-		}
-
-		public void printTestData ()
-		{
-				TweetData data = DataFromJson ();
-				data.printDesc ();
-		
-	
-				ArrayList TweetDatas = testTweetDatas ();
-				foreach (TweetData tweetData in TweetDatas) {
-						tweetData.printDesc ();
-				}
 		}
 		
-		public ArrayList testTweetDatas ()
+		public ArrayList nextTweetDatasForTag (string hashTag)
 		{
-				ArrayList JSONInStringFormat = arrayFromJsonString ();
-				Debug.Log ("Got " + JSONInStringFormat.Count + " json objects from arrayfromjsonstring");
+		
+				ArrayList JSONInStringFormat = TweetFromFileReader.readJsonFromFile ("Assets/TweetDataInJson/ebola3.json", nextTweetIndex, nextTweetIndex + tweetIntervalToUse);
+				nextTweetIndex += tweetIntervalToUse + 1;
+				//Debug.Log ("Got " + JSONInStringFormat.Count + " json objects from arrayfromjsonstring");
 				ArrayList TweetDatas = tweetsFromJSONData (JSONInStringFormat);
 				return TweetDatas;
 		}
@@ -47,10 +39,13 @@ public class TweetFactory : MonoBehaviour
 				foreach (string jsonString in JSONData) {
 			
 						JSONObject jsonData = new JSONObject (jsonString);
-						if (jsonData.Count != 13) {
-								Debug.Log ("Bailing out on tweetdata, count: " + jsonData.Count);
-								continue;
-						}
+//						Debug.Log ("json object for a string");
+//						Debug.Log (jsonData);
+//						
+//						if (jsonData.Count != 13) {
+//								Debug.Log ("Bailing out on tweetdata, count: " + jsonData.Count);
+//								continue;
+//						}
 						TweetData tweetD = new TweetData ();
 						bool wellFormatted = tweetD.fillTweetWithData (jsonData); 
 						if (wellFormatted) {
@@ -58,6 +53,7 @@ public class TweetFactory : MonoBehaviour
 						}
 						//Debug.Log ("was well formatted: " + wellFormatted);
 				}
+				Debug.Log ("Got " + TweetDatas.Count + " tweetdatas after parse");
 				return TweetDatas;
 		}
 	
