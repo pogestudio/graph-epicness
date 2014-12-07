@@ -2,7 +2,8 @@ fileFormatVersion: 2
 guid: 72ef238468c90b348b7f34d1e7181fe4
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - tweetText: {fileID: 11400000, guid: 1096b773df49db64fbbac7caa96e8384, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

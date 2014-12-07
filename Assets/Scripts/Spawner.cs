@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class Spawner : MonoBehaviour
 		private Queue<TweetData> tweetDatasToBeSpawned;
 		public ArrayList tweetsFromFile;
 		public bool TimelineMoved;
+
+		public Text currentTimeText;	
+		public Text numberOfTweetText;
+		private int numberOfTweets = 0;
 	
 
 		// Use this for initialization
@@ -28,22 +33,28 @@ public class Spawner : MonoBehaviour
 //				foreach (TweetData data in TestTweets) {
 //						//tweetDatasToBeSpawned.Enqueue (data);
 //				}
-				
-
-		}
+			
+				numberOfTweetText = GameObject.FindGameObjectWithTag("numberOfTweets").GetComponent<Text>();
+				currentTimeText = GameObject.FindGameObjectWithTag("currentTime").GetComponent<Text>();
+			
+	}
 	
 		// Update is called once per frame
 		void Update ()
 		{
 				if (TimelineMoved) {
 						foreach (TweetData tweet in tweetsFromFile) {
+						numberOfTweets++;
 								if (tweet.DateTime < CurrentTimelineTime && tweet.DateTime > OldTimelineTime) {
 										addTweetDatasToQueue (tweet);
 								}
 						}
 						OldTimelineTime = CurrentTimelineTime;
 						TimelineMoved = false;
-				}
+						numberOfTweetText.text = "" + numberOfTweets;
+						currentTimeText.text = "" + CurrentTimelineTime;
+				
+		}
 				//for now, always 
 				bool shouldSpawnNext = shouldSpawnNextInQueue (this.tweetDatasToBeSpawned);
 		

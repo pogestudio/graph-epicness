@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Tweet : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public class Tweet : MonoBehaviour
 		CoordinateCorverter CC;
 		CoordinateCorverter.CoordinateXY c;
 		TweetData Data;
-
-		public GUIText GuiText;
+	
+		public Text tweetText;
 
 		double Latitude;
 		double Longitude;
@@ -30,8 +31,9 @@ public class Tweet : MonoBehaviour
 				PinDot (c);
 				this.transform.parent = WorldMap.transform;
 				this.transform.localScale = new Vector3 (0.05f, 0.05f, 1f);
-				GuiText = GameObject.FindGameObjectWithTag ("Finish").guiText;
-		}
+
+				tweetText = GameObject.FindGameObjectWithTag("tweetText").GetComponent<Text>();
+	}
 		
 		public void addData (TweetData data)
 		{
@@ -43,13 +45,12 @@ public class Tweet : MonoBehaviour
 //				float x = Input.mousePosition.x;
 //				float y = Input.mousePosition.y;
 //				Debug.Log ("x: " + x + " y: " + y);
-//				GuiText.transform.position = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
-				GuiText.text = Data.text;
+				tweetText.text = Data.text;
 		}
 
 		public void OnMouseExit ()
 		{
-				GuiText.text = "";
+		tweetText.text = "Hold your mouse pointer over a tweet dot to show more information.";
 		}
 
 		void PinDot (CoordinateCorverter.CoordinateXY xy)
