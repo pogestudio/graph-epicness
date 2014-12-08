@@ -96,7 +96,7 @@ public class Tweet : MonoBehaviour
 
 		Vector3 ScaleForTime (float time)
 		{
-				float progress = Mathf.Max (0.25f, lifeSpan / time);
+				float progress = Mathf.Max (0.8f, (lifeSpan / time)/3);
 				Vector3 vector = new Vector3 (0.05f * progress, 0.05f * progress, 1f);
 				return vector;
 		}
