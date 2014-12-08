@@ -9,33 +9,38 @@ public class Spawner : MonoBehaviour
 
 		public GameObject TweetDot;
 		public DateTime CurrentTimelineTime;
-		public DateTime OldTimelineTime;
 		private Queue<TweetData> tweetDatasToBeSpawned;
 		public ArrayList tweetsFromFile;
 		public bool TimelineMoved;
+	public TweetFactory TweetFactory;
 
 		public Text currentTimeText;	
 		public Text numberOfTweetText;
 		private int numberOfTweets = 0;
+	private DateTime StartTime;
+	private int TimerSeconds;
 	
 
 		// Use this for initialization
 		void Start ()
 		{
 //for now, spawner decides when to add stuff.
-				CurrentTimelineTime = new DateTime (1970, 1, 1, 0, 0, 0, 0).AddSeconds (Math.Round (1413964928192 / 1000d)).ToLocalTime ();	// Based off of test data input - needs to be made generic.
-				OldTimelineTime = CurrentTimelineTime;
-				TimelineMoved = false;
 				tweetDatasToBeSpawned = new Queue<TweetData> ();
 				GameObject factoryGO = GameObject.Find ("TweetFactory");
-				TweetFactory tweetFactory = factoryGO.GetComponentInChildren<TweetFactory> ();
-				tweetsFromFile = tweetFactory.nextTweetDatasForTag ("ebola");
+				TweetFactory = factoryGO.GetComponentInChildren<TweetFactory> ();
+				tweetsFromFile = TweetFactory.nextTweetDatasForTag ("ebola");
 //				foreach (TweetData data in TestTweets) {
 //						//tweetDatasToBeSpawned.Enqueue (data);
 //				}
 			
 				numberOfTweetText = GameObject.FindGameObjectWithTag("numberOfTweets").GetComponent<Text>();
 				currentTimeText = GameObject.FindGameObjectWithTag("currentTime").GetComponent<Text>();
+
+				TweetData FirstObject = (TweetData)tweetsFromFile [0];
+				CurrentTimelineTime = FirstObject.DateTime;
+				TimelineMoved = false;
+				TimerReset ();
+		TimerSeconds = 1;
 			
 	}
 	
@@ -43,18 +48,10 @@ public class Spawner : MonoBehaviour
 		void Update ()
 		{
 				if (TimelineMoved) {
-						foreach (TweetData tweet in tweetsFromFile) {
-						numberOfTweets++;
-								if (tweet.DateTime < CurrentTimelineTime && tweet.DateTime > OldTimelineTime) {
-										addTweetDatasToQueue (tweet);
-								}
-						}
-						OldTimelineTime = CurrentTimelineTime;
 						TimelineMoved = false;
-						numberOfTweetText.text = "" + numberOfTweets;
-						currentTimeText.text = "" + CurrentTimelineTime;
-				
-		}
+						currentTimeText.text = "" + CurrentTimelineTime.Hour + ":" + CurrentTimelineTime.Minute;
+				}
+
 				//for now, always 
 				bool shouldSpawnNext = shouldSpawnNextInQueue (this.tweetDatasToBeSpawned);
 		
@@ -71,6 +68,29 @@ public class Spawner : MonoBehaviour
 			
 						shouldSpawnNext = shouldSpawnNextInQueue (this.tweetDatasToBeSpawned);
 				}
+
+				//Add more tweets if their are more within the time.
+				//TweetData LastTweet = tweetsFromFile [tweetsFromFile.Count - 1];
+				TweetData LastTweet = (TweetData)tweetsFromFile [0];
+				if (LastTweet.DateTime < CurrentTimelineTime && TimerDone()) {
+						tweetsFromFile = TweetFactory.nextTweetDatasForTag ("ebola");
+						foreach (TweetData tweet in tweetsFromFile){
+								addTweetDatasToQueue (tweet);
+								numberOfTweets++;
+						}
+				TimerReset();
+				}
+				numberOfTweetText.text = "" + numberOfTweets;
+		}
+
+		//Returns true if more than @TimerSeconds have passed.
+		public bool TimerDone(){
+			return (DateTime.Now - StartTime).Seconds > TimerSeconds;
+		}
+
+		//Sets Timer to current time.
+		private void TimerReset(){
+			StartTime = DateTime.Now;
 		}
 	
 		private bool shouldSpawnNextInQueue (Queue<TweetData> queue)
