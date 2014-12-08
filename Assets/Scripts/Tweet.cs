@@ -79,11 +79,9 @@ public class Tweet : MonoBehaviour
 		}
 		
 		float opacityForTime (float time)
-		{
-		
-				float c = -0.870551f;
-				float progress = Mathf.Min (1, time / lifeSpan);
-				return endOpacity + (startOpacity - endOpacity) * (1 - progress);
+		{	
+			float progress = Mathf.Min (1, time / lifeSpan);
+			return endOpacity + (startOpacity - endOpacity) * (1 - progress);
 		}
 
 		float ColorForTime (float time)
