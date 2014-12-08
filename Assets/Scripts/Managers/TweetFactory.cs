@@ -5,7 +5,7 @@ public class TweetFactory : MonoBehaviour
 {
 
 		private long nextTweetIndex = 0;
-		private long tweetIntervalToUse = 1000;
+		private long tweetIntervalToUse = 2000;
 
 		// Use this for initialization
 		void Start ()
@@ -45,12 +45,6 @@ public class TweetFactory : MonoBehaviour
 				}
 				Debug.Log ("Got " + TweetDatas.Count + " tweetdatas after parse");
 				return TweetDatas;
-		}
-	
-		private ArrayList arrayFromJsonString ()
-		{
-				ArrayList objects = TestTweetData.testTweetData ();
-				return objects;
 		}
 		
 }
