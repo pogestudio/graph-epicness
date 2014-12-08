@@ -59,8 +59,8 @@ public class TweetData
 										this.hashTags.Add (j.GetField ("text").ToString ());
 								}
 						}
-						this.localHour = Convert.ToInt32 (jsonObject.GetField ("time_hours"));
-						this.localMinute = Convert.ToInt32 (jsonObject.GetField ("time_minutes"));
+						this.localHour = Convert.ToInt32 (jsonObject.GetField ("time_hours").ToString());
+						this.localMinute = Convert.ToInt32 (jsonObject.GetField ("time_minutes").ToString());
 						this.DateTime = new DateTime (1970, 1, 1, 0, 0, 0, 0).AddSeconds (Math.Round (Convert.ToDouble (jsonObject.GetField ("timestamp_ms").ToString ()) / 1000d));
 						//Debug.Log ("DateTime is: " + this.DateTime);
 			

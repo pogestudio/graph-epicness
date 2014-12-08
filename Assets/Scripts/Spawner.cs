@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
 {
 
 		public GameObject TweetDot;
-		public DateTime CurrentTimelineTime;
+		public int CurrentTimelineTime;
 		private Queue<TweetData> tweetDatasToBeSpawned;
 		public ArrayList tweetsFromFile;
 		public bool TimelineMoved;
@@ -36,8 +36,7 @@ public class Spawner : MonoBehaviour
 				numberOfTweetText = GameObject.FindGameObjectWithTag ("numberOfTweets").GetComponent<Text> ();
 				currentTimeText = GameObject.FindGameObjectWithTag ("currentTime").GetComponent<Text> ();
 
-				TweetData FirstObject = (TweetData)tweetsFromFile [0];
-				CurrentTimelineTime = FirstObject.DateTime;
+				CurrentTimelineTime = 0;
 				TimelineMoved = false;
 				TimerReset ();
 				TimerSeconds = 1;
@@ -50,7 +49,7 @@ public class Spawner : MonoBehaviour
 				if (TimelineMoved) {
 
 						TimelineMoved = false;
-						currentTimeText.text = "" + CurrentTimelineTime.Hour + ":" + CurrentTimelineTime.Minute;
+						currentTimeText.text = "" + CurrentTimelineTime + ":" + "00";
 				}
 
 				//for now, always 
@@ -73,7 +72,7 @@ public class Spawner : MonoBehaviour
 				//Add more tweets if their are more within the time.
 				//TweetData LastTweet = tweetsFromFile [tweetsFromFile.Count - 1];
 				TweetData LastTweet = (TweetData)tweetsFromFile [0];
-				if (LastTweet.DateTime < CurrentTimelineTime && TimerDone ()) {
+				if (LastTweet.localHour < CurrentTimelineTime && TimerDone ()) {
 						tweetsFromFile = TweetFactory.nextTweetDatasForTag ("ebola");
 						foreach (TweetData tweet in tweetsFromFile) {
 								addTweetDatasToQueue (tweet);
