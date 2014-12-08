@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class CoordinateCorverter : MonoBehaviour
+public class CoordinateCorverter
 {
 
 		static double MapPixels = 4096;

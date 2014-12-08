@@ -62,7 +62,7 @@ public class TweetData
 			
 				} catch (Exception ex) {
 						_isWFormatted = false;
-						Debug.Log ("got exception: " + ex.Message);
+						//Debug.Log ("got exception: " + ex.Message);
 				}
 				
 				return _isWFormatted;
