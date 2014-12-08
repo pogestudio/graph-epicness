@@ -5,7 +5,7 @@ public class TweetFactory : MonoBehaviour
 {
 
 		private long nextTweetIndex = 0;
-		private long tweetIntervalToUse = 512;
+		private long tweetIntervalToUse = 2000;
 
 		// Use this for initialization
 		void Start ()
