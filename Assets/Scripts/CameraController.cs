@@ -39,7 +39,7 @@ public class CameraController : MonoBehaviour
 				if (Input.GetKeyDown ("c")) {
 				}
 				if (Input.GetKey ("v")) {
-						Spawner.CurrentTimelineTime = Spawner.CurrentTimelineTime.AddHours (20);
+						Spawner.CurrentTimelineTime = Spawner.CurrentTimelineTime.AddHours (1);
 						Spawner.TimelineMoved = true;
 				}
 		}
