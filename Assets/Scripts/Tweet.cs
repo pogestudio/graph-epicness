@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class Tweet : MonoBehaviour
 {
@@ -20,10 +21,12 @@ public class Tweet : MonoBehaviour
 		float lifeSpan = 5f;
 		float startOpacity = 0.6f;
 		float endOpacity = 0.2f;
+		private DateTime StartTime;
 
 
 		public void Build ()
 		{
+				StartTime = DateTime.Now;
 				this.Latitude = this.Data.coordinate.Longitude;
 				this.Longitude = this.Data.coordinate.Latitude;
 				WorldMap = GameObject.FindGameObjectWithTag ("Respawn");
@@ -68,12 +71,14 @@ public class Tweet : MonoBehaviour
 		
 		void Update ()
 		{
-				timeLived += Time.deltaTime;
-				SpriteRenderer thisRenderer = gameObject.GetComponent<SpriteRenderer> (); 
-				float opacity = opacityForTime (timeLived);
-				float green = ColorForTime (timeLived);
-				thisRenderer.color = new Color (1f, green, 0.016f, opacity);
-				this.transform.localScale = ScaleForTime (timeLived);
+				if ((DateTime.Now - StartTime).Seconds < 3) {
+						timeLived += Time.deltaTime;
+						SpriteRenderer thisRenderer = gameObject.GetComponent<SpriteRenderer> (); 
+						float opacity = opacityForTime (timeLived);
+						float green = ColorForTime (timeLived);
+						thisRenderer.color = new Color (1f, green, 0.016f, opacity);
+						this.transform.localScale = ScaleForTime (timeLived);
+				}
 		}
 		
 		float opacityForTime (float time)
