@@ -17,6 +17,8 @@ public class TweetData
 		public CoordinateLL coordinate;
 		public IList<string> hashTags;
 		public DateTime DateTime;
+		public int localHour;
+		public int localMinute;
 		
 		private bool _isWFormatted;
 
@@ -58,6 +60,10 @@ public class TweetData
 								}
 						}
 						this.DateTime = new DateTime (1970, 1, 1, 0, 0, 0, 0).AddSeconds (Math.Round (Convert.ToDouble (jsonObject.GetField ("timestamp_ms").ToString ()) / 1000d)).ToLocalTime ();
+						
+			
+						this.localHour = Convert.ToInt32 (jsonObject.GetField ("time_hours"));
+						this.localMinute = Convert.ToInt32 (jsonObject.GetField ("time_minutes"));
 						//Debug.Log ("DateTime is: " + this.DateTime);
 			
 				} catch (Exception ex) {

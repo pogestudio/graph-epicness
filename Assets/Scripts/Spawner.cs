@@ -34,17 +34,17 @@ public class Spawner : MonoBehaviour
 //						//tweetDatasToBeSpawned.Enqueue (data);
 //				}
 			
-				numberOfTweetText = GameObject.FindGameObjectWithTag("numberOfTweets").GetComponent<Text>();
-				currentTimeText = GameObject.FindGameObjectWithTag("currentTime").GetComponent<Text>();
+				numberOfTweetText = GameObject.FindGameObjectWithTag ("numberOfTweets").GetComponent<Text> ();
+				currentTimeText = GameObject.FindGameObjectWithTag ("currentTime").GetComponent<Text> ();
 			
-	}
+		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
 				if (TimelineMoved) {
 						foreach (TweetData tweet in tweetsFromFile) {
-						numberOfTweets++;
+								numberOfTweets++;
 								if (tweet.DateTime < CurrentTimelineTime && tweet.DateTime > OldTimelineTime) {
 										addTweetDatasToQueue (tweet);
 								}
@@ -54,7 +54,7 @@ public class Spawner : MonoBehaviour
 						numberOfTweetText.text = "" + numberOfTweets;
 						currentTimeText.text = "" + CurrentTimelineTime;
 				
-		}
+				}
 				//for now, always 
 				bool shouldSpawnNext = shouldSpawnNextInQueue (this.tweetDatasToBeSpawned);
 		

@@ -5,7 +5,7 @@ public class TweetFactory : MonoBehaviour
 {
 
 		private long nextTweetIndex = 0;
-		private long tweetIntervalToUse = 2000;
+		private long tweetIntervalToUse = 10000;
 
 		// Use this for initialization
 		void Start ()
@@ -18,6 +18,7 @@ public class TweetFactory : MonoBehaviour
 		
 				ArrayList JSONInStringFormat = TweetFromFileReader.readJsonFromFile ("Assets/TweetDataInJson/testTweets.json", nextTweetIndex, nextTweetIndex + tweetIntervalToUse);
 				nextTweetIndex += tweetIntervalToUse + 1;
+				
 				//Debug.Log ("Got " + JSONInStringFormat.Count + " json objects from arrayfromjsonstring");
 				ArrayList TweetDatas = tweetsFromJSONData (JSONInStringFormat);
 				return TweetDatas;
@@ -44,6 +45,11 @@ public class TweetFactory : MonoBehaviour
 						//Debug.Log ("was well formatted: " + wellFormatted);
 				}
 				Debug.Log ("Got " + TweetDatas.Count + " tweetdatas after parse");
+				for (int i = 1; i < 10; i++) {
+			
+						Debug.Log (TweetDatas [i]);
+			
+				}
 				return TweetDatas;
 		}
 		
