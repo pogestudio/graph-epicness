@@ -5,7 +5,7 @@ public class TweetFactory : MonoBehaviour
 {
 
 		private long nextTweetIndex = 0;
-		private long tweetIntervalToUse = 512;
+		private long tweetIntervalToUse = 256;
 
 		// Use this for initialization
 		void Start ()
@@ -44,12 +44,12 @@ public class TweetFactory : MonoBehaviour
 						}
 						//Debug.Log ("was well formatted: " + wellFormatted);
 				}
-				Debug.Log ("Got " + TweetDatas.Count + " tweetdatas after parse");
-				for (int i = 1; i < 10; i++) {
-			
-						Debug.Log (TweetDatas [i]);
-			
-				}
+//				Debug.Log ("Got " + TweetDatas.Count + " tweetdatas after parse");
+//				for (int i = 1; i < 10; i++) {
+//			
+//						Debug.Log (TweetDatas [i]);
+//			
+//				}
 				return TweetDatas;
 		}
 		

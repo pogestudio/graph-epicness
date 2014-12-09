@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class CameraController : MonoBehaviour
 {
 		public Spawner Spawner;
+	private DateTime StartTime;
+	private int TimerSeconds;
 
 		// Use this for initialization
 		void Start ()
 		{
+		StartTime = DateTime.Now;
+		TimerSeconds = 1;
 		}
 
 		// Update is called once per frame
@@ -39,8 +44,21 @@ public class CameraController : MonoBehaviour
 				if (Input.GetKeyDown ("c")) {
 				}
 				if (Input.GetKeyDown ("v")) {
-						Spawner.CurrentTimelineTime += 1;
-						Spawner.TimelineMoved = true;
+				}
+				if (TimerDone()) {
+					Spawner.CurrentTimelineTime += 1;
+					Spawner.TimelineMoved = true;
+					TimerReset();
 				}
 		}
+
+	public bool TimerDone ()
+	{
+		return (DateTime.Now - StartTime).Seconds > TimerSeconds;
+	}
+
+	private void TimerReset ()
+	{
+		StartTime = DateTime.Now;
+	}
 }

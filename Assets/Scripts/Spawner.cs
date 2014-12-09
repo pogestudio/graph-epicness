@@ -39,7 +39,7 @@ public class Spawner : MonoBehaviour
 				CurrentTimelineTime = 0;
 				TimelineMoved = false;
 				TimerReset ();
-				TimerSeconds = 1;
+				TimerSeconds = 0;
 			
 		}
 	
@@ -81,6 +81,12 @@ public class Spawner : MonoBehaviour
 						TimerReset ();
 				}
 				numberOfTweetText.text = "" + numberOfTweets;
+		if (LastTweet.localMinute < 10) {
+						currentTimeText.text = "" + LastTweet.localHour + ":0" + LastTweet.localMinute;
+				} else {
+						currentTimeText.text = "" + LastTweet.localHour + ":" + LastTweet.localMinute;
+				}
+				
 		}
 
 		//Returns true if more than @TimerSeconds have passed.

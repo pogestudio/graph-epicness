@@ -22,7 +22,7 @@ public class Tweet : MonoBehaviour
 		float startOpacity = 0.6f;
 		float endOpacity = 0.2f;
 		private DateTime StartTime;
-
+		//ArrayList CollisionObjects; 
 
 		public void Build ()
 		{
@@ -40,7 +40,19 @@ public class Tweet : MonoBehaviour
 				thisRenderer.color = new Color (1f, 1f, 1f, 0);
 				
 				tweetText = GameObject.FindGameObjectWithTag("tweetText").GetComponent<Text>();
+				//CollisionObjects = new ArrayList ();
+				Destroy (gameObject, 6.0f);
 	}
+
+//		private void OnCollisionEnter2D(Collision2D CollisionObject){
+//				if ((DateTime.Now - StartTime).Seconds < 6) {
+//					CollisionObjects.Add (CollisionObject.gameObject);
+//					Debug.Log(CollisionObjects.Count);
+//				}
+//				if (CollisionObjects.Count > 4) {
+//					Destroy(gameObject);
+//				}
+//		}
 		
 		public void addData (TweetData data)
 		{
@@ -71,7 +83,7 @@ public class Tweet : MonoBehaviour
 		
 		void Update ()
 		{
-				if ((DateTime.Now - StartTime).Seconds < 3) {
+				if ((DateTime.Now - StartTime).Seconds < 6) {
 						timeLived += Time.deltaTime;
 						SpriteRenderer thisRenderer = gameObject.GetComponent<SpriteRenderer> (); 
 						float opacity = opacityForTime (timeLived);
